@@ -1,18 +1,23 @@
 package sorts;
-import java.util.Arrays;
 
 public class ArrayMethods3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[]test1= {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-		int[]sort1=insertionSort(test1);
-		double[]test2= {9.8, 7.6, 6.5, 6.5, 3.2, 2.1, 5.4, 4.3, 1.2, 8.7};
-		double[]sort2= selectionSort(test2);
-		//String[]test3= {9,8,7,6,5,4,3,2,1,0};
-		printDoubleArray(test2);
+		/*int[]test1= {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 		System.out.println();
-		System.out.print(Arrays.toString(sort2));
+		ArrayMethods3.insertionSort(test1);*/
+		
+		double[]test2= {9.8, 7.6, 6.5, 6.5, 3.2, 2.1, 5.4, 4.3, 1.2, 8.7};
+		printDoubleArray(test2);
+		ArrayMethods3.selectionSort(test2);
+		System.out.println();
+		printDoubleArray(test2);
+		
+		/*String[]test3= {"The", "Quick", "Brown", "Fox", "Jumped", "Over", "A", "Lazy", "Dog"};
+		printStringArray(test3);
+		ArrayMethods3.bubbleSort(test3);
+		System.out.println();
+		printStringArray(test3);*/
 	}
 	public static int[] insertionSort(int[] list1)
 	{
@@ -20,22 +25,30 @@ public class ArrayMethods3 {
 		
 		return list1;
 	}
-	public static double[] selectionSort(double [] list1)
+	public static void selectionSort(double [] list1)
 	{
-		double[] newList = populate(list1);
-		for(int i=0;i<list1.length;i++)
+		
+		for(int i=0;i<list1.length-1;i++)
 		{
+			int key=i;
+		
 			for(int j=i+1;j<list1.length;j++)
 			{
-				if(list1[j]<list1[i])
-					doubleSwap(list1,list1[j],list1[i]);
+				if(list1[j]<list1[key])
+					key= j;
 			}
+			doubleSwap(list1,key,i);
 		}
-		return newList;
 	}
 	public static void bubbleSort(String [] list1)
 	{
-		
+		 int n = list1.length;
+	        for (int i = 0; i < n-1; i++)
+	            for (int j = 0; j < n-i-1; j++)
+	                if (list1[j].compareToIgnoreCase(list1[j+1])!= 0)
+	                {
+	                    stringSwap(list1,j,j+1);
+	                }
 	}
 	private static void printNumArray(int[]list)
 	{
@@ -58,17 +71,23 @@ public class ArrayMethods3 {
 			System.out.print("["+list[i]+"] ");
 		}
 	}
-	private static void swap(int i, int j)
+	private static void intSwap(int[] arr, int i, int j)
 	{
-		int temp=i;
-		i=j;
-		j=temp;
+		int temp=arr[i];
+		arr[i]=arr[j];
+		arr[j]=temp;
 	}
-	private static void doubleSwap(double[] arr, double i, double j)
+	private static void doubleSwap(double[] arr, int i, int j)
 	{
-		double temp=i;
-		i=j;
-		j=temp;
+		double temp=arr[i];
+		arr[i]=arr[j];
+		arr[j]=temp;
+	}
+	private static void stringSwap(String[] arr, int i, int j)
+	{
+		String temp=arr[i];
+		arr[i]=arr[j];
+		arr[j]=temp;
 	}
 	private static double[] populate(double[]a)
 	{
