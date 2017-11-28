@@ -3,9 +3,14 @@ package sorts;
 public class ArrayMethods3 {
 
 	public static void main(String[] args) {
-		/*int[]test1= {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+		int[]test1= {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+		printIntArray(test1);
+		ArrayMethods3.insertionSort(test1);
 		System.out.println();
-		ArrayMethods3.insertionSort(test1);*/
+		printIntArray(test1);
+		
+		System.out.println();
+		System.out.println();
 		
 		double[]test2= {9.8, 7.6, 6.5, 6.5, 3.2, 2.1, 5.4, 4.3, 1.2, 8.7};
 		printDoubleArray(test2);
@@ -13,17 +18,24 @@ public class ArrayMethods3 {
 		System.out.println();
 		printDoubleArray(test2);
 		
-		/*String[]test3= {"The", "Quick", "Brown", "Fox", "Jumped", "Over", "A", "Lazy", "Dog"};
+		System.out.println();
+		System.out.println();
+		
+		String[]test3= {"The", "Quick", "Brown", "Fox", "Jumped", "Over", "A", "Lazy", "Dog"};
 		printStringArray(test3);
 		ArrayMethods3.bubbleSort(test3);
 		System.out.println();
-		printStringArray(test3);*/
+		printStringArray(test3);
 	}
-	public static int[] insertionSort(int[] list1)
+	public static void insertionSort(int[] list1)
 	{
-		
-		
-		return list1;
+		for(int i=1;i<list1.length;i++)
+			for(int j=i;j>0;j--)
+			{
+				if(list1[j]<list1[j-1])
+					intSwap(list1, j, j-1);
+			}
+			
 	}
 	public static void selectionSort(double [] list1)
 	{
@@ -45,12 +57,12 @@ public class ArrayMethods3 {
 		 int n = list1.length;
 	        for (int i = 0; i < n-1; i++)
 	            for (int j = 0; j < n-i-1; j++)
-	                if (list1[j].compareToIgnoreCase(list1[j+1])!= 0)
+	                if (list1[j].compareToIgnoreCase(list1[j+1])> 0)
 	                {
 	                    stringSwap(list1,j,j+1);
 	                }
 	}
-	private static void printNumArray(int[]list)
+	private static void printIntArray(int[]list)
 	{
 		for(int i=0;i<list.length;i++)
 		{
@@ -88,14 +100,5 @@ public class ArrayMethods3 {
 		String temp=arr[i];
 		arr[i]=arr[j];
 		arr[j]=temp;
-	}
-	private static double[] populate(double[]a)
-	{
-		double []copy=new double[a.length];
-		for(int i=0;i<a.length;i++)
-		{
-			copy[i]=a[i];
-		}
-		return copy;
 	}
 }
